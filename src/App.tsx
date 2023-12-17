@@ -67,12 +67,7 @@ function App() {
               />
             </HStack>
           </Box>
-          <GameGrid
-            gameQuery={gameQuery}
-            onLoadGame={(pageSize) =>
-              setGameQuery({ ...gameQuery, page_size: pageSize })
-            }
-          />
+          <GameGrid gameQuery={gameQuery} />
         </GridItem>
       </Grid>
     </>
