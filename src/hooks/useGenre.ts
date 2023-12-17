@@ -3,11 +3,12 @@ import genres from "../data/genres"
 import {  useQuery } from "@tanstack/react-query"
 import {  Genre,  genreService } from "../services/genreService"
 import { FetchResponse } from "../services/ApiClient"
+import ms from "ms"
 const useGenre = ()=>{
     return useQuery<FetchResponse<Genre>,Error>({
         queryKey:["genres"],
         queryFn: genreService.getAll,
-        staleTime:24*60*60*1000,
+        staleTime:ms("24h"),
         initialData:genres
       })   
 }
