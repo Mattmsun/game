@@ -1,6 +1,6 @@
 import { Box, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
 import Navbar from "./components/Navbar";
-import GameGrid from "./components/GameGrid";
+import GameGrid, { pageSize } from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import { useState } from "react";
 
@@ -15,9 +15,12 @@ export interface GameQuery {
   platform: Platform | null;
   ordering: Ordering | null;
   searchText: string;
+  page_size: number;
 }
 function App() {
-  const [gameQuery, setGameQuery] = useState({} as GameQuery);
+  const [gameQuery, setGameQuery] = useState({
+    page_size: pageSize,
+  } as GameQuery);
   return (
     <>
       <Grid
@@ -64,7 +67,12 @@ function App() {
               />
             </HStack>
           </Box>
-          <GameGrid gameQuery={gameQuery} />
+          <GameGrid
+            gameQuery={gameQuery}
+            onLoadGame={(pageSize) =>
+              setGameQuery({ ...gameQuery, page_size: pageSize })
+            }
+          />
         </GridItem>
       </Grid>
     </>

@@ -6,8 +6,4 @@ export interface Platform{
     slug:string;
 }
 
-export interface PlatformResponse{
-    count:number;
-    results: Platform[]
-}
-export const platformService = new ApiClient<PlatformResponse>('/platforms/lists/parents')
+export const platformService = new ApiClient<Platform>('/platforms/lists/parents')

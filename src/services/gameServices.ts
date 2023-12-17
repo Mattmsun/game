@@ -9,8 +9,5 @@ export interface Game {
     metacritic:number;
     rating_top:number;
   }
-export interface GameResponse{
-    count:number;
-    results: Game[]
-}
-export const gameService =  new ApiClient<GameResponse>("/games")
+
+export const gameService =  new ApiClient<Game>("/games")

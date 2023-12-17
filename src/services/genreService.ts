@@ -6,8 +6,4 @@ export interface Genre{
     image_background:string
 }
 
-export interface GenreResponse{
-    count:number;
-    results: Genre[]
-}
-export const genreService =  new ApiClient<GenreResponse>("/genres")
+export const genreService =  new ApiClient<Genre>("/genres")
