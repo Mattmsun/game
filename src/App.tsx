@@ -3,11 +3,12 @@ import Navbar from "./components/Navbar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import { useState } from "react";
-import { Genre } from "./hooks/useGenre";
+
 import PlatformSelector from "./components/PlatformSelector";
-import { Platform } from "./hooks/useGame";
 import SortSelector, { Ordering } from "./components/SortSelector";
 import GameHeading from "./components/GameHeading";
+import { Genre } from "./services/genreService";
+import { Platform } from "./services/platformService";
 
 export interface GameQuery {
   genre: Genre | null;

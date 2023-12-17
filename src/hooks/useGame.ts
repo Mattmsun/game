@@ -1,29 +1,21 @@
 
-import { GameQuery } from "../App";
-import useData from "./useData";
+import { useQuery } from "@tanstack/react-query"
+import { GameResponse, gameService } from "../services/gameServices"
+import { GameQuery } from "../App"
 
-
-export interface Platform{
-    id:number;
-    name:string;
-    slug:string
-
-}
-export interface Game {
-    id: number;
-    name: string;
-    background_image:string;
-    parent_platforms:{platform:Platform}[];
-    metacritic:number;
-    rating_top:number;
-  }
-
-const useGame = (gameQuery: GameQuery)=> 
-useData<Game>("/games",
+const useGame = (gameQuery: GameQuery)=>{
+  const requestConfig =  
   {params:{genres:gameQuery.genre?.id,
     parent_platforms:gameQuery.platform?.id,
     ordering:gameQuery.ordering?.value,
     search: gameQuery.searchText
-  }},
-  [gameQuery])
+  }}
+  console.log(requestConfig)
+  return useQuery<GameResponse,Error>({
+      queryKey:["games",gameQuery],
+      queryFn: ()=>gameService.get(requestConfig),
+     
+     
+    })   
+}
 export default useGame
