@@ -1,14 +1,14 @@
 
 import { useInfiniteQuery } from "@tanstack/react-query"
 import {  gameService } from "../services/gameServices"
-import { GameQuery } from "../App"
 import ms from "ms"
+import useGameQueryStore from "../store"
 
 
 
-const useGame = (gameQuery: GameQuery)=>{
+const useGame = ()=>{
 
-
+  const gameQuery = useGameQueryStore(s=>s.gameQuery)
   return useInfiniteQuery({
   queryKey:["games",gameQuery],
   queryFn: ({pageParam =1 })=>gameService.getAll( {params:{genres:gameQuery.genreId,
