@@ -1,5 +1,5 @@
 import { SimpleGrid, Spinner, Text } from "@chakra-ui/react";
-import useGame from "../hooks/useGame";
+import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
@@ -15,7 +15,7 @@ const GameGrid = () => {
 
     fetchNextPage,
     hasNextPage,
-  } = useGame();
+  } = useGames();
   const skeletons = [1, 2, 3, 4, 5, 6];
   const fetchedGame =
     data?.pages.reduce((acc, page) => acc + page.results.length, 0) || 0;
