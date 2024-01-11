@@ -1,9 +1,4 @@
 import ApiClient from "./ApiClient";
-
-export interface Genre{
-    id:number;
-    name:string;
-    image_background:string
-}
+import { Genre } from "../entities/Genre";
 
 export const genreService =  new ApiClient<Genre>("/genres")
