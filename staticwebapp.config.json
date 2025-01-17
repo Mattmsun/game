@@ -1,0 +1,13 @@
+{
+    "routes": [
+      {
+        "route": "/admin/*",
+        "allowedRoles": ["admin"]
+      },
+      {
+        "route": "/user/*",
+        "allowedRoles": ["authenticated"]
+      }
+    ]
+  }
+  
